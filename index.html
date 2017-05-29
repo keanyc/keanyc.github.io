@@ -19,6 +19,7 @@
 		h1 {
 			font-size: 50px;
 			color: #fff;
+			cursor: default;
 		}
 
 		.app {
@@ -33,22 +34,18 @@
 		a {
 			text-decoration: none;
 			color: #fff;
-		}
-
-		p {
-			margin-top: 30px;
+			font-size: 22px;
 		}
 	</style>
 </head>
 <body>
 	<div class="app">
-		<h1>Hello, World!</h1>
-		<p><a href="https://twitter.com/keanychu">@keanychu</a></p>
+		<h1></h1>
+		<p><a href="https://twitter.com/keanychu"></a></p>
 	</div>
 	<script>
-		var $body = document.querySelector('body');
-
 		function refreshData() {
+			var $body = document.querySelector('body');
 			var color;
 			var d = new Date();
 			var h = d.getHours();
@@ -63,7 +60,27 @@
 			$body.style.backgroundColor = color;
 		}
 
+		function rand(start, end) {
+			return Math.floor(Math.random() * end) + start;
+		}
+
+		var i = 0;
+
+		function typeIn(el, v, start, end) {
+			var $el = document.querySelector(el);
+			$el.innerHTML = $el.innerHTML + v[i++];
+			if (!start) start = 50;
+			if (!end) end = 100;
+			if (i < v.length)
+				setTimeout(function(){ typeIn(el, v); }, rand(start, end));
+			else
+				i = 0;
+		}
+
+		refreshData();
 		setInterval(refreshData, 1000);
+		setTimeout(function(){ typeIn('h1', 'Hello, World!'); }, 1000);
+		setTimeout(function(){ typeIn('a', 'Ask me anything @keanychu', 10, 50); }, 4000);
 	</script>
 </body>
 </html>
