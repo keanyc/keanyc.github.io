@@ -1,43 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1">
-  <title>KeaNy's Projects</title>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1">
+	<title>KeaNy's Projects</title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<style>
-	* {
-		font-family: "Open Sans";
-		margin: 0;
-		padding: 0;
-	}
-	h1 {
-		font-size: 50px;
- 	}
-	.app {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		margin-right: -50%;
-		transform: translate(-50%, -50%);
-		text-align: center;
-	}
-	a {
-		text-decoration: none;
-		color: #333;
-	}
-	a:hover {
-		border-bottom: 3px solid #666;
-	}
-	p {
-		margin-top: 30px;
-	}
+		* {
+			font-family: "Open Sans";
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			animation-duration: 1s;
+		}
+
+		h1 {
+			font-size: 50px;
+			color: #fff;
+		}
+
+		.app {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-right: -50%;
+			transform: translate(-50%, -50%);
+			text-align: center;
+		}
+
+		a {
+			text-decoration: none;
+			color: #fff;
+		}
+
+		p {
+			margin-top: 30px;
+		}
 	</style>
 </head>
 <body>
 	<div class="app">
-	  <h1>Hello World!</h1>
+		<h1>Hello, World!</h1>
 		<p><a href="https://twitter.com/keanychu">@keanychu</a></p>
 	</div>
+	<script>
+		var $body = document.querySelector('body');
+
+		function refreshData() {
+			var color;
+			var d = new Date();
+			var h = d.getHours();
+			var m = d.getMinutes();
+			var s = d.getSeconds();
+
+			if (h <= 9) h = '0' + h;
+			if (m <= 9) m = '0' + m;
+			if (s <= 9) s = '0' + s;
+
+			color = '#' + h + m + s;
+			$body.style.backgroundColor = color;
+		}
+
+		setInterval(refreshData, 1000);
+	</script>
 </body>
 </html>
